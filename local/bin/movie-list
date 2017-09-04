@@ -1,0 +1,18 @@
+#! /usr/bin/env sh
+
+if [ -f /usr/local/lib/plexurl-helper-common.sh ]; then
+        . /usr/local/lib/plexurl-helper-common.sh
+elif [ -f local/lib/plexurl-helper-common.sh ]; then
+        . local/lib/plexurl-helper-common.sh
+else
+        echo "Common functions not found, settings not loaded."
+        exit 1
+fi
+
+send_command="$plexurl_command --movie \
+        $server_option \
+        $username_option \
+        $servername_option \
+        $password_option"
+
+$send_command
